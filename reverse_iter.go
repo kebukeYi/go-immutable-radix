@@ -55,6 +55,9 @@ func (ri *ReverseIterator[T]) SeekReverseLowerBound(key []byte) {
 	// node should both be nil to prevent the iterator from assuming it is just
 	// iterating the whole tree from the root node. Either way this needs to end
 	// up as nil so just set it here.
+	if ri.i.node == nil {
+		return
+	}
 	n := ri.i.node
 	ri.i.node = nil
 	search := key
